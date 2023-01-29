@@ -1,12 +1,11 @@
 #!/bin/sh -l
 
 mkdir -p ~/.ssh
-ls -la ~/.ssh
 
 eval `ssh-agent -s`
 
-ssh-keygen -R github.com
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keygen -R github.com >/dev/null 2>&1
+ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
 
 echo "Update git submodule"
 
@@ -22,8 +21,8 @@ git clone "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
 
 ssh-add -D
 
-ssh-keygen -R github.com
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keygen -R github.com >/dev/null 2>&1
+ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
 
 cd "${INPUT_REPO}"
 
@@ -51,8 +50,8 @@ cd ..
 
 ssh-add -D
 
-ssh-keygen -R github.com
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keygen -R github.com >/dev/null 2>&1
+ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
 
 echo "${INPUT_SSH_KEY}" | ssh-add -
 
