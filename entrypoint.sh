@@ -1,5 +1,6 @@
 #!/bin/sh -l
 
+mkdir -p ~/.ssh
 ssh-keygen -R github.com
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
