@@ -2,7 +2,7 @@
 
 mkdir -p ~/.ssh
 ssh-keygen -R github.com
-ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keyscan github.com
 
 echo "Update git submodule"
 
