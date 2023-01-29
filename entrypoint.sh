@@ -7,13 +7,16 @@ eval `ssh-agent -s`
 
 ssh-keygen -R github.com
 ssh-keyscan github.com >> ~/.ssh/known_hosts
-cat ~/.ssh/known_hosts
 
 echo "Update git submodule"
 
 echo "${INPUT_SSH_KEY}" | ssh-add -
 
+echo "aaaa"
+
 echo "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
+
+echo "aaaa"
 
 git clone "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
 
