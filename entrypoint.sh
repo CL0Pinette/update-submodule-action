@@ -2,7 +2,13 @@
 
 echo "Update git submodule"
 
-git clone "https://${INPUT_USER}:${INPUT_TOKEN}@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
+eval `ssh-agent -s`
+echo "${INPUT_SSH_KEY}" | ssh-add -
+
+git clone "ssh://git@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
+
+ssh-add -D
+
 cd ${INPUT_REPO}
 
 git checkout ${GITHUB_REF_NAME}
@@ -18,6 +24,8 @@ git config user.name ${INPUT_COMMITTOR_EMAIL}
 
 echo "Update ${INPUT_PATH}"
 
+echo "${INPUT_SSH_KEY_SUBMODULE}" | ssh-add -
+
 git submodule update --init --recursive
 git submodule update --remote --merge ${INPUT_PATH}
 
@@ -25,6 +33,12 @@ cd ${INPUT_PATH}
 git checkout ${GITHUB_REF_NAME}
 cd ..
 
+ssh-add -D
+
+echo "${INPUT_SSH_KEY}" | ssh-add -
+
 git add .
 git commit -m "update ${GITHUB_REPOSITORY} submodule"
-git push "https://${INPUT_USER}:${INPUT_TOKEN}@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git" ${GITHUB_REF_NAME}
+git push "ssh://git@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git" ${GITHUB_REF_NAME}
+
+ssh-add -D
