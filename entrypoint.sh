@@ -12,7 +12,7 @@ echo "Update git submodule"
 eval `ssh-agent -s`
 echo "${INPUT_SSH_KEY}" | ssh-add -
 
-git clone "ssh://git@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
+git clone "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
 
 ssh-add -D
 
@@ -52,7 +52,7 @@ echo "${INPUT_SSH_KEY}" | ssh-add -
 
 git add .
 git commit -m "update ${GITHUB_REPOSITORY} submodule"
-git push "ssh://git@github.com/${INPUT_REPO_OWNER}/${INPUT_REPO}.git" "${GITHUB_REF_NAME}"
+git push "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git" "${GITHUB_REF_NAME}"
 
 ssh-add -D
 
