@@ -1,5 +1,8 @@
 #!/bin/sh -l
 
+ssh-keygen -R github.com
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 echo "Update git submodule"
 
 eval `ssh-agent -s`
