@@ -1,8 +1,11 @@
 #!/bin/sh -l
 
 mkdir -p ~/.ssh
+ls -la ~/.ssh
+
 ssh-keygen -R github.com
 ssh-keyscan github.com
+cat ~/.ssh/known_hosts
 
 echo "Update git submodule"
 
