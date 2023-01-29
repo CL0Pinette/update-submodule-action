@@ -7,6 +7,9 @@ inputs:
   ssh_key:
     description: The SSH Key used to pull your repository
     required: true
+  ssh_key_submodule:
+    description: The SSH Key used to pull the submodule
+    required: true
   repo:
     description: The Remote Repo
     required: true
