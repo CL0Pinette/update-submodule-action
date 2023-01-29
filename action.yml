@@ -4,8 +4,8 @@ inputs:
   user:
     description: The GitHub API user
     required: true
-  token:
-    description: The GitHub API token to use
+  ssh_key:
+    description: The SSH Key used to pull your repository
     required: true
   repo:
     description: The Remote Repo
