@@ -42,7 +42,7 @@ echo "Update ${INPUT_PATH}"
 
 echo "${INPUT_SSH_KEY_SUBMODULE}" | ssh-add -
 
-git submodule update --init --recursive
+git submodule update --init "${INPUT_PATH}"
 git submodule update --remote --merge "${INPUT_PATH}"
 
 cd "${INPUT_PATH}"
