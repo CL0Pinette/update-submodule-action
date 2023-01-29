@@ -3,13 +3,14 @@
 mkdir -p ~/.ssh
 ls -la ~/.ssh
 
+eval `ssh-agent -s`
+
 ssh-keygen -R github.com
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 cat ~/.ssh/known_hosts
 
 echo "Update git submodule"
 
-eval `ssh-agent -s`
 echo "${INPUT_SSH_KEY}" | ssh-add -
 
 git clone "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
