@@ -11,11 +11,9 @@ echo "Update git submodule"
 
 echo "${INPUT_SSH_KEY}" | ssh-add -
 
-echo "aaaa"
-
 echo "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
 
-echo "aaaa"
+rm -rf "${INPUT_REPO}"
 
 git clone "git@github.com:${INPUT_REPO_OWNER}/${INPUT_REPO}.git"
 
